@@ -1,11 +1,12 @@
 import { Button } from "@material-tailwind/react";
+import { useRouter } from "next/router";
+import register from "./register";
 
-export default function Home() {
+export default function Login() {
+  const router = useRouter();
   return (
     <>
-    <h1>Login</h1>
-    <Button>Holaa</Button>
-      <div className="bg-red-200">HOME</div>
+      <div>Hola</div>
     </>
   );
 }
