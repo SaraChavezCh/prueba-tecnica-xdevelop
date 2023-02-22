@@ -4,7 +4,7 @@ import React from 'react'
 
 const Header = () => {
   return (
-    <div className="bg-[#EDEDED] w-full h-[73px] flex flex-row flex-nowrap items-center justify-between pr-[34px] pl-[62px] ">
+    <div className="bg-[#EDEDED] w-full h-[73px] flex flex-row flex-nowrap items-center justify-between pr-[34px] pl-[62px] border-current border-b">
       <Image
         width={104}
         height={31}

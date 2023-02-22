@@ -37,11 +37,11 @@ export default function Login() {
 
   return (
     <>
-      <div className="bg-blue-gray-100 m-20 text-center p-3 w-[280px]">
-        <h1>Inicia sesión</h1>
+      <div className="bg-white text-center p-6 m-auto rounded-2xl w-[800px]">
+        <h1 className=" text-center font-extrabold text-2xl text-black">Inicia sesión</h1>
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="text-left w-[80%] m-auto"
+          className="text-center w-[50%] m-auto"
         >
           <div>
             <Controller
@@ -82,12 +82,11 @@ export default function Login() {
           <Button disabled={!isValid} type="submit" className="mt-2">
             Iniciar sesión
           </Button>
-          <Input/>
         </form>
         <p className="pt-2">
           <b>¿No tienes un usuario?</b>
         </p>
-        <Button variant="text" onClick={() => router.push("/register")}>
+        <Button  variant="text" onClick={() => router.push("/register")}>
           Da click aquí
         </Button>
       </div>

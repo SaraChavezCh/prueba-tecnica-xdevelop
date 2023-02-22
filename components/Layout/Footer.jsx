@@ -8,7 +8,7 @@ const Footer = () => {
     <div>
       <div
         className="w-full min-h-[70px] bg-[#EDEDED] text-black gap-3 flex flex-col justify-center
-    text-center sm:flex-row sm:justify-between items-center px-16 py-6"
+    text-center sm:flex-row sm:justify-between items-center px-16 py-6 border-current border-t"
       >
         <Image
         width={124}
