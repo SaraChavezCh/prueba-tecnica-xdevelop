@@ -6,12 +6,8 @@ import Judges from "@/components/Judges";
 
 const Home = () => {
 
-  
-
-  
-
   return (
-    <div className="min-h-[calc(100vh_-_143px)] relative bg-blue-gray-100 overflow-hidden">
+    <div className="min-h-[100vh] relative bg-blue-gray-100 overflow-hidden">
 
     <GoulaSection/>
     <Categories/>

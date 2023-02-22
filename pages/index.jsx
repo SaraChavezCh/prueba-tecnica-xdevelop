@@ -10,7 +10,6 @@ export default function Login() {
 
   const {
     control,
-    reset,
     handleSubmit,
     formState: { isValid, errors },
   } = useForm({
@@ -83,6 +82,7 @@ export default function Login() {
           <Button disabled={!isValid} type="submit" className="mt-2">
             Iniciar sesión
           </Button>
+          <Input/>
         </form>
         <p className="pt-2">
           <b>¿No tienes un usuario?</b>

@@ -13,7 +13,7 @@ const Judges = () => {
   console.log(judgesInfo)
   return (
     <div>
-      
+      <h1>{judgesInfo.acf?.titulo}</h1>
     </div>
   )
 }

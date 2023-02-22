@@ -12,8 +12,24 @@ const GoulaSection = () => {
   }, [])
   console.log(goulaInfo)
   return (
-    <div>
+    <div className="bg-brown-100">
       <h1>{goulaInfo.title?.rendered}</h1>
+      <p>{goulaInfo.acf?.descripcion}</p>
+
+      <div className="flex row-auto">
+        <div className="bg-brown-400">
+          <h2>{goulaInfo.acf?.fechas_importantes.subtitulo}</h2>
+          <ul>
+            {goulaInfo.acf?.fechas_importantes.fechas.map((item)=>(
+              <li>{item.fecha}</li>
+            ))}</ul>
+        </div>
+        <div className="bg-brown-300"> 
+          <h2>{goulaInfo.acf?.bases.subtitulo}</h2>
+          <p>{goulaInfo.acf?.bases.contenido}</p>
+          </div>
+      </div>
+        
     </div>
   )
 }
