@@ -7,7 +7,7 @@ const Footer = () => {
   return (
     <div>
       <div
-        className="w-full min-h-[70px] bg-gray-400 text-black gap-3 flex flex-col justify-center
+        className="w-full min-h-[70px] bg-[#EDEDED] text-black gap-3 flex flex-col justify-center
     text-center sm:flex-row sm:justify-between items-center px-16 py-6"
       >
         <Image
@@ -21,7 +21,7 @@ const Footer = () => {
           <a className="text-blue font-semibold text-base ">hola@goula.com</a>
         </p>
         <div className="flex flex-col gap-2 justify-center items-center md:flex-row space-x-[8px]">
-          <p>Síguenos</p>
+          <p>Síguenos en:</p>
           <div className="flex gap-2">
             <Image
             
