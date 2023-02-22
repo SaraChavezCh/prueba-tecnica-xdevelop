@@ -1,11 +1,23 @@
-import React from "react";
-import { Input } from "@material-tailwind/react";
+import Categories from "@/components/Categories";
+import GoulaSection from "@/components/GoulaSection";
+import Judges from "@/components/Judges";
+
+
 
 const Home = () => {
+
+  
+
+  
+
   return (
-    <div className="w-72">
-    <Input label="Input With Icon" icon={<i className="fas fa-heart" />} />
-  </div>
+    <div className="min-h-[calc(100vh_-_143px)] relative bg-blue-gray-100 overflow-hidden">
+
+    <GoulaSection/>
+    <Categories/>
+    <Judges/>
+</div>
+ 
   );
 };
 

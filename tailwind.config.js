@@ -19,6 +19,9 @@ module.exports = withMT( {
         xl: "1536px",
       },
     },
+    fontFamily: {
+      poppins: ['Poppins', 'sans-serif'],
+    },
   },
   plugins: [],
 });
