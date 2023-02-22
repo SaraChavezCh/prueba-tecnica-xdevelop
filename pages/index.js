@@ -1,67 +1,89 @@
 import { Button } from "@material-tailwind/react";
 import axios from "axios";
 import { useRouter } from "next/router";
-import { useForm } from "react-hook-form";
-import register from "./register";
+import { useForm, Controller } from "react-hook-form";
+import { Input } from "@material-tailwind/react";
+import { ErrorMessage } from "@hookform/error-message";
 
 export default function Login() {
   const router = useRouter();
 
   const {
-    register,
+    control,
+    reset,
     handleSubmit,
-    formState: { isValid },
-  } = useForm();
+    formState: { isValid, errors },
+  } = useForm({
+    defaultValues: {
+      username: "",
+      password: "",
+    },
+    mode: "onChange",
+  });
+
+  const login = (data)=>{
+    return axios.post("https://tusitioweb.dev/awards/wp-json/jwt-auth/v1/token", data)
+  }
   const onSubmit = (data) => {
-    if (isValid) {
-      console.log(data);
-    }
+    login(data)
+    .then((res)=>{
+      localStorage.setItem("token", res.data.token)
+      router.push("/home")
+    })
+    .catch((error)=>console.log(error))
+    
+
+    
   };
 
- 
   return (
     <>
       <div className="bg-blue-gray-100 m-20 text-center p-3 w-[280px]">
         <h1>Inicia sesión</h1>
-        <form 
-        onSubmit={handleSubmit(onSubmit)}
-        className="text-left w-[80%] m-auto">
-          <label className="block pt-4">
-            <span className="block text-sm font-medium text-slate-700 after:content-['*'] after:ml-0.5 after:text-red-500">
-              Email
-            </span>
-            <input
-             {...register('username', { required: true })}
-              type="email"
-              name= "email"
-              className="mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400
-      focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500
-      disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none
-      invalid:border-pink-500 invalid:text-pink-600
-      focus:invalid:border-pink-500 focus:invalid:ring-pink-500 peer ...
-    "/>
-    <p className="mt-2 invisible peer-invalid:visible text-pink-600 text-sm">
-    Please provide a valid email address.
-  </p>
-          
-          </label>
-          <label className="block pt-4">
-            <span className="block text-sm font-medium text-slate-700">
-              Password
-            </span>
-            <input
-             {...register('password', { required: true })}
-              type="text"
-              className="mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400
-      focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500
-      disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none
-      invalid:border-pink-500 invalid:text-pink-600
-      focus:invalid:border-pink-500 focus:invalid:ring-pink-500
-    "
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className="text-left w-[80%] m-auto"
+        >
+          <div>
+            <Controller
+              name="username"
+              control={control}
+              rules={{
+                required: "This is required.",
+                pattern: {
+                  value: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,}$/,
+                  message: "Ingresa un email valido",
+                },
+              }}
+              render={({ field }) => (
+                <Input type="text" label="Username" color="blue" {...field} />
+              )}
             />
-          </label>
+            <ErrorMessage name="username" errors={errors} />
+          </div>
+          <div>
+            <Controller
+              name="password"
+              control={control}
+              rules={{
+                required: "This is required."
+              }}
+              render={({ field }) => (
+                <Input
+                  type="password"
+                  label="Password"
+                  color="blue"
+                  {...field}
+                />
+              )}
+            />
+            <ErrorMessage name="password" errors={errors} />
+          </div>
+
+          <Button disabled={!isValid} type="submit" className="mt-2">
+            Iniciar sesión
+          </Button>
         </form>
-        <Button type="submit" className="mt-2">Iniciar sesión</Button>
         <p className="pt-2">
           <b>¿No tienes un usuario?</b>
         </p>
