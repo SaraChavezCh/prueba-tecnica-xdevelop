@@ -609,7 +609,7 @@ const register = () => {
               <ErrorMessage name="nivel_de_ventas.anio_3" errors={errors} />
             </div>
           </section>
-          <Button disabled={!isValid} type="submit" className="mt-2">
+          <Button disabled={!isValid} type="submit" className="mt-2 bg-[#FA6162]">
             Registrarse
           </Button>
         </form>
