@@ -14,7 +14,8 @@ const GoulaSection = () => {
   return (
     <div className="bg-brown-100">
       <h1>{goulaInfo.title?.rendered}</h1>
-      <p>{goulaInfo.acf?.descripcion}</p>
+      <div  dangerouslySetInnerHTML={{ __html: goulaInfo.acf?.descripcion }} />
+      
 
       <div className="flex row-auto">
         <div className="bg-brown-400">

@@ -29,21 +29,21 @@ export default function Login() {
       localStorage.setItem("token", res.data.token)
       router.push("/home")
     })
-    .catch((error)=>console.log(error))
+    .catch((error)=>alert("Error de credenciales"))
     
 
     
   };
 
   return (
-    <>
+    <div className=" w-full h-full" style={{backgroundImage:"url(/agave.jpg)"}}>
       <div className="bg-white text-center p-6 m-auto rounded-2xl w-[800px]">
-        <h1 className=" text-center font-extrabold text-2xl text-black">Inicia sesión</h1>
+        <h1 className=" text-center font-extrabold text-2xl text-black m-4">Inicia sesión</h1>
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="text-center w-[50%] m-auto"
+          className="text-center w-[50%] m-auto flex flex-col gap-3"
         >
-          <div>
+          <div className="">
             <Controller
               name="username"
               control={control}
@@ -90,6 +90,6 @@ export default function Login() {
           Da click aquí
         </Button>
       </div>
-    </>
+    </div>
   );
 }

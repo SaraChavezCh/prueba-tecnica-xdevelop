@@ -18,8 +18,8 @@ const Categories = () => {
       <section className="flex gap-2">
 
       {
-        categoriesInfo.acf?.categorias.map((card)=>(
-          <div className="w-[120px] bg-orange-300">
+        categoriesInfo.acf?.categorias.map((card, index)=>(
+          <div className={`w-[120px] ${index%2 == 0 ? 'bg-orange-300' : 'bg-blue-gray-300'  }`}>
           <h2>{card.titulo}</h2>
           <p>{card.descripcion}</p>
         </div>

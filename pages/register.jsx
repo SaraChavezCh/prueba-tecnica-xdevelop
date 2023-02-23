@@ -1,9 +1,11 @@
 import React from "react";
-import { Button, Input } from "@material-tailwind/react";
+import { Button, Input, Option, Select } from "@material-tailwind/react";
 import { useForm, Controller } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
 import { useRouter } from "next/router";
 import axios from "axios";
+import { formValues } from "@/helpers/formValues";
+
 
 const register = () => {
   const router = useRouter();
@@ -12,17 +14,7 @@ const register = () => {
     handleSubmit,
     formState: { isValid, errors },
   } = useForm({
-    defaultValues: {
-      email: "",
-      nombres: "",
-      apellidos: "",
-      password: "",
-      telefono: "",
-      cargo: "",
-      nombre_empresa: "",
-      fecha_origen: "",
-      numero_de_empleado: "",
-    },
+    defaultValues: formValues,
     mode: "onChange",
   });
   const register = (data) => {
@@ -35,8 +27,10 @@ const register = () => {
     register(data)
       .then((res) => {
         console.log(res.data);
+        alert("Se ha creado el registro correctamente")
+        router.push("/")
       })
-      .catch((error) => console.log(error));
+      .catch((error) => alert("Ocurrio un error, no se pudo generar el registro"));
   };
 
   return (
@@ -52,7 +46,7 @@ const register = () => {
         <Button
           className="text-[#FA6162] p-2"
           variant="text"
-          onClick={() => router.push("/login")}
+          onClick={() => router.push("/")}
         >
           Inicia sesion aquí
         </Button>
@@ -129,6 +123,9 @@ const register = () => {
                 control={control}
                 rules={{
                   required: "This is required.",
+                  pattern:{ value: /^[0-9]{10}$/ ,
+                  message:"El numero de celular debe tener  10 digitos "
+                }
                 }}
                 render={({ field }) => (
                   <Input type="text" label="Telefono" color="blue" {...field} />
@@ -140,6 +137,9 @@ const register = () => {
                 control={control}
                 rules={{
                   required: "This is required.",
+                  pattern:{ value: /^[0-9]{10}$/,
+                  message:"El numero de celular debe tener  10 digitos "
+                }
                 }}
                 render={({ field }) => (
                   <Input type="text" label="Celular" color="blue" {...field} />
@@ -232,7 +232,7 @@ const register = () => {
                 )}
               />
               <ErrorMessage name="fecha_origen" errors={errors} />
-              <Controller
+              {/* <Controller
                 name="numero_de_empleados"
                 control={control}
                 rules={{
@@ -247,7 +247,7 @@ const register = () => {
                   />
                 )}
               />
-              <ErrorMessage name="numero_de_empleados" errors={errors} />
+              <ErrorMessage name="numero_de_empleados" errors={errors} /> */}
               <Controller
                 name="hombres"
                 control={control}
@@ -391,7 +391,7 @@ const register = () => {
               />
               <ErrorMessage name="colonia" errors={errors} />
               <Controller
-                name="delegación"
+                name="delegacion_municipio"
                 control={control}
                 rules={{
                   required: "This is required.",
@@ -405,7 +405,7 @@ const register = () => {
                   />
                 )}
               />
-              <ErrorMessage name="delegación" errors={errors} />
+              <ErrorMessage name="delegacion_municipio" errors={errors} />
               <Controller
                 name="ciudad"
                 control={control}
@@ -560,29 +560,53 @@ const register = () => {
                 )}
               />
               <ErrorMessage name="cual_programa" errors={errors} />
+              <h3>Nivel de ventas</h3>
               <Controller
-                name="nivel_de_ventas"
+                name="nivel_de_ventas.anio_1"
                 control={control}
                 rules={{
                   required: "This is required.",
                 }}
                 render={({ field }) => (
-                  <>
-                    <label>Nivel de ventas</label>
-                    <select
-                      name="nivel_de_ventas"
-                      label="Nivel de ventas"
-                      color="blue"
-                      {...field}
-                    >
-                      <option>100</option>
-                      <option>200</option>
-                      <option>300</option>
-                    </select>
-                  </>
+                  <Input
+                  type="text"
+                  label="Año 1"
+                  {...field}
+                  />
+                  
                 )}
               />
-              <ErrorMessage name="nivel_de_ventas" errors={errors} />
+              <ErrorMessage name="nivel_de_ventas.anio_1" errors={errors} />
+              <Controller
+                name="nivel_de_ventas.anio_2"
+                control={control}
+                rules={{
+                  required: "This is required.",
+                }}
+                render={({ field }) => (
+                  <Input
+                  type="text"
+                  label="Año 2"
+                  {...field}/>
+                  
+                )}
+              />
+              <ErrorMessage name="nivel_de_ventas.anio_2" errors={errors} />
+              <Controller
+                name="nivel_de_ventas.anio_3"
+                control={control}
+                rules={{
+                  required: "This is required.",
+                }}
+                render={({ field }) => (
+                  <Input
+                  type="text"
+                  label="Año 3"
+                  {...field}/>
+                  
+                )}
+              />
+              <ErrorMessage name="nivel_de_ventas.anio_3" errors={errors} />
             </div>
           </section>
           <Button disabled={!isValid} type="submit" className="mt-2">

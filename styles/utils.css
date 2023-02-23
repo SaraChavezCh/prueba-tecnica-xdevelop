@@ -9,3 +9,7 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #636363;
 }
+
+.bold{
+font-weight: 600;
+}
