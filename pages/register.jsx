@@ -341,7 +341,7 @@ const register = () => {
                 render={({ field }) => (
                   <Input
                     type="text"
-                    label="url empresa"
+                    label="URL empresa"
                     color="blue"
                     {...field}
                   />
@@ -359,7 +359,7 @@ const register = () => {
                   },
                 }}
                 render={({ field }) => (
-                  <Input type="text" label="cp" color="blue" {...field} />
+                  <Input type="text" label="CP" color="blue" {...field} />
                 )}
               />
               <ErrorMessage name="cp" errors={errors} />
@@ -609,7 +609,7 @@ const register = () => {
               <ErrorMessage name="nivel_de_ventas.anio_3" errors={errors} />
             </div>
           </section>
-          <Button disabled={!isValid} type="submit" className="mt-2 bg-[#FA6162]">
+          <Button disabled={!isValid}  type="submit" className="mt-2 bg-[#FA6162] shadow-none hover:shadow-[#FA6162]">
             Registrarse
           </Button>
         </form>
